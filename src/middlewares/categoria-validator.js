@@ -11,3 +11,24 @@ export const agergarCategoriaValidator = [
     validarCampos,
     handleErrors
 ]
+
+export const listarCategoriasValidator = [
+    validateJWT,
+    hasRoles("ADMIN"),
+    validarCampos,
+    handleErrors
+]
+
+export const editarCategoriaValidator = [
+    validateJWT,
+    hasRoles("ADMIN"),
+    validarCampos,
+    handleErrors
+]
+
+export const eliminarCategoriaValidator = [
+    validateJWT,
+    hasRoles("ADMIN"),
+    validarCampos,
+    handleErrors
+]

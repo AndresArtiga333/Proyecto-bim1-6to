@@ -35,3 +35,60 @@ export const listarCategorias = async (req, res) => {
         })
     }
 }
+
+export const editarCategoria = async (req, res) => {
+    try{
+        const {cid} = req.params;
+        const data = req.body;
+        const categoriaActualizada = await Categoria.findByIdAndUpdate(cid, {$set: data}, {new: true});
+
+        if(!categoriaActualizada){
+            return res.status(403).json({
+                success: false,
+                message: "La categoria no existe"
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Categoria actualizada correctamente",
+            categoriaActualizada
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al actualizar la categoria",
+            error: err.message
+        })
+    }
+}
+
+export const eliminarCategoria = async (req, res) => {
+    try{
+        const {cid} = req.params;
+
+        /*const categoriaDefault = await Categoria.findOne({ nombre: "default" });
+        if (!categoriaDefault) {
+            return res.status(500).json({
+                success: false,
+                message: "La categoría 'default' no existe"
+            });
+        }
+        await Publicacion.updateMany(
+            { categoria: caid }, 
+            { categoria: categoriaDefault._id } 
+        );*/
+
+        await Categoria.findByIdAndUpdate(cid, {status: false}, {new: true});
+        return res.status(200).json({
+            success: true,
+            message: "Categoria eliminada correctamente"
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al eliminar la categoria",
+            error: err.message
+        })
+    }
+}
