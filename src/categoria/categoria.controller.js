@@ -1,4 +1,5 @@
 import Categoria from './categoria.model.js';
+import Productos from '../productos/productos.model.js';
 
 export const agregarCategoria = async (req, res) => {
     try{
@@ -67,17 +68,17 @@ export const eliminarCategoria = async (req, res) => {
     try{
         const {cid} = req.params;
 
-        /*const categoriaDefault = await Categoria.findOne({ nombre: "default" });
+        const categoriaDefault = await Categoria.findOne({ nombre: "default" });
         if (!categoriaDefault) {
             return res.status(500).json({
                 success: false,
                 message: "La categoría 'default' no existe"
             });
         }
-        await Publicacion.updateMany(
-            { categoria: caid }, 
+        await Productos.updateMany(
+            { categoria: cid }, 
             { categoria: categoriaDefault._id } 
-        );*/
+        );
 
         await Categoria.findByIdAndUpdate(cid, {status: false}, {new: true});
         return res.status(200).json({

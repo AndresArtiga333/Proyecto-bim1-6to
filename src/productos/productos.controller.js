@@ -135,3 +135,63 @@ export const productosAgotados = async (req, res) => {
         })
     }
 }
+
+export const productosMasVendidos = async (req, res) => {
+    try{
+        const {limite} = req.body;
+        const productosMasVendidos = await Productos.find({vendidos: {$gt: 0}}).sort({vendidos: -1})
+        .limit(limite ? parseInt(limite) : 10).populate("categoria", "nombre");
+        if (productosMasVendidos.length === 0) {
+            return res.status(200).json({
+                success: true,
+                message: "No hay productos más vendidos"
+            });
+        }
+        const productosAtributos = productosMasVendidos.map(producto => ({
+            nombre: producto.nombre,
+            precio: producto.precio,
+            descripcion: producto.descripcion,
+            stock: producto.stock,
+            categoria: producto.categoria.nombre
+        }));
+        return res.status(200).json({
+            success: true,
+            productos: productosAtributos
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al listar los productos más vendidos",
+            error: err.message
+        })
+    }
+}
+
+export const eliminarProducto = async (req, res) => {
+    try{
+        const {pid} = req.params;
+        if(!pid){
+            return res.status(403).json({
+                success: false,
+                message: "El producto no existe"
+            })
+        }
+        const productoEliminado = await Productos.findByIdAndUpdate(pid, { status: false }, { new: true }).populate("categoria", "nombre");
+        const respuesta = {
+        nombre: productoEliminado.nombre, 
+                status: productoEliminado.status
+            };
+
+        return res.status(200).json({
+            success: true,
+            message: "Producto eliminado correctamente",
+            producto: respuesta
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al eliminar el producto",
+            error: err.message
+        })
+    }
+}
