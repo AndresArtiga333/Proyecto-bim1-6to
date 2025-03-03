@@ -138,56 +138,39 @@ export const eliminarUsuario = async (req, res) =>{
     }
 }
 
-export const explorarProductos = async (req, res) =>{
-    try{
-        const {nombre, listarCategorias, categoria, masVendidos} = req.body
-        let productos
+export const explorarProductos = async (req, res) => {
+    try {
+        const { nombre, categoria, masVendidos, listarCategorias } = req.body;
+        const filter = {};
+ 
+        if (categoria) {
+            filter.categoria = categoria;
+        }
+ 
+        if (nombre) {
+            filter.nombre = nombre;
+        }
 
-        if(nombre){
-            productos = await Productos.find({nombre, status: true}).populate("categoria", "nombre");
-
-            if(!productos){
-                return res.status(404).json({
-                    success: true,
-                    message: "No se encontraron productos con ese nombre"
-                });
-            }
-        }else if(masVendidos){
-            productos = await Productos.find({vendidos: {$gt: 0}}).sort({vendidos: -1}).limit(10).populate("categoria", "nombre");
-           if (productos.length === 0) {
-               return res.status(200).json({
-                   success: true,
-                   message: "No hay productos más vendidos"
-               });
-           }
-        }else if(listarCategorias){
-            productos = await Categoria.find({status: true});
+        if(listarCategorias){
+            const categorias = await Categoria.find({status: true});
             return res.status(200).json({
                 success: true,
-                categorias: productos
+                categorias
             })
-        }else if (categoria){
-            const categoriaB = await Categoria.find({nombre: categoria});
-            if (categoriaB.length === 0) {
-                return res.status(404).json({
-                    success: false,
-                    message: "No se encontró la categoría especificada"
-                });
-            }
-
-            const cid = categoriaB[0]
-            productos = await Productos.find(({categoria: cid})).populate("categoria", "nombre");
-            if(!productos){
-                return res.status(404).json({
-                    success: true,
-                    message: "No hay productos con esa categoria"
-                });
-            }
-        }else{
-            return res.status(400).json({
+        }
+ 
+        let orden = {};
+        if (masVendidos) {
+            orden.vendidos = -1;
+        }
+ 
+        const productos = await Productos.find(filter).sort(orden).populate("categoria", "nombre");
+    
+        if (productos.length === 0) {
+            return res.status(404).json({
                 success: false,
-                message: "Ingresa un parametro por favor"
-            })
+                message: "No se encontraron productos con los filtros proporcionados"
+            });
         }
 
         const productosAtributos = productos.map(producto => ({
@@ -195,21 +178,20 @@ export const explorarProductos = async (req, res) =>{
             precio: producto.precio,
             descripcion: producto.descripcion,
             stock: producto.stock,
-            vendidos: producto.vendidos, 
-            categoria: producto.categoria.nombre 
+            categoria: producto.categoria.nombre, 
+            ventas: producto.vendidos
         }));
 
         return res.status(200).json({
             success: true,
-            message: "Productos obtenidos correctamente",
-            producto: productosAtributos
+            productos: productosAtributos
         });
-
-    }catch(err){
+    } catch (err) {
         return res.status(500).json({
             success: false,
-            message: "Error al explorar los productos",
+            message: "Error filtering products",
             error: err.message
-        })
+        });
     }
-}
+};
+ 

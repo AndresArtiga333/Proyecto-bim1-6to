@@ -36,6 +36,9 @@ const userSchema = Schema({
         type: Boolean,
         default: true
     }
+},
+    {
+        versionKey: false
 })
 
 userSchema.methods.toJSON = function(){

@@ -15,7 +15,7 @@ export const agregarProducto = async (req, res) => {
                 precio: productoConCategoria.precio,
                 descripcion: productoConCategoria.descripcion,
                 stock: productoConCategoria.stock,
-                categoria: productoConCategoria.categoria.nombre // Nombre de la categoría
+                categoria: productoConCategoria.categoria.nombre 
             }
         });
     }catch(err){
