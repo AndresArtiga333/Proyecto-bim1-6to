@@ -39,12 +39,13 @@ productoSchema.methods.estaAgotado = function () {
     return this.stock === 0;
 };
 
-productoSchema.methods.actualizarStock = function (cantidadVendida) {
+productoSchema.methods.actualizarStock = async function (cantidadVendida) {
     if (cantidadVendida > this.stock) {
         throw new Error("No hay suficiente stock para realizar la venta");
     }
     this.stock -= cantidadVendida;
     this.vendidos += cantidadVendida;
+    await this.save();
 };
 
 productoSchema.methods.toJSON = function(){

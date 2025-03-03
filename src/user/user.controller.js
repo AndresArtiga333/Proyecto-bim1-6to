@@ -1,5 +1,7 @@
 import bcrypt from "bcrypt";
 import Usuarios from "./user.model.js"
+import Productos from "../productos/productos.model.js"
+import Categoria from "../categoria/categoria.model.js"
 
 export const agregarUsuario = async (req, res) =>{
     try{
@@ -131,6 +133,82 @@ export const eliminarUsuario = async (req, res) =>{
         return res.status(500).json({
             success: false,
             message: "Error al eliminar el usuario",
+            error: err.message
+        })
+    }
+}
+
+export const explorarProductos = async (req, res) =>{
+    try{
+        const {nombre, listarCategorias, categoria, masVendidos} = req.body
+        let productos
+
+        if(nombre){
+            productos = await Productos.find({nombre, status: true}).populate("categoria", "nombre");
+
+            if(!productos){
+                return res.status(404).json({
+                    success: true,
+                    message: "No se encontraron productos con ese nombre"
+                });
+            }
+        }else if(masVendidos){
+            productos = await Productos.find({vendidos: {$gt: 0}}).sort({vendidos: -1}).limit(10).populate("categoria", "nombre");
+           if (productos.length === 0) {
+               return res.status(200).json({
+                   success: true,
+                   message: "No hay productos más vendidos"
+               });
+           }
+        }else if(listarCategorias){
+            productos = await Categoria.find({status: true});
+            return res.status(200).json({
+                success: true,
+                categorias: productos
+            })
+        }else if (categoria){
+            const categoriaB = await Categoria.find({nombre: categoria});
+            if (categoriaB.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "No se encontró la categoría especificada"
+                });
+            }
+
+            const cid = categoriaB[0]
+            productos = await Productos.find(({categoria: cid})).populate("categoria", "nombre");
+            if(!productos){
+                return res.status(404).json({
+                    success: true,
+                    message: "No hay productos con esa categoria"
+                });
+            }
+        }else{
+            return res.status(400).json({
+                success: false,
+                message: "Ingresa un parametro por favor"
+            })
+        }
+
+        const productosAtributos = productos.map(producto => ({
+            nombre: producto.nombre,
+            precio: producto.precio,
+            descripcion: producto.descripcion,
+            stock: producto.stock,
+            vendidos: producto.vendidos, 
+            categoria: producto.categoria.nombre 
+        }));
+
+        return res.status(200).json({
+            success: true,
+            message: "Productos obtenidos correctamente",
+            producto: productosAtributos
+        });
+
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al explorar los productos",
             error: err.message
         })
     }

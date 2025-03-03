@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { agregarUsuario, actualizarUsuarios, eliminarUsuario, actualizarModoAdmin, eliminarUsuarioModoAdmin } from "./user.controller.js";
-import { crearUsuarioValidator ,actualizarUsuarioValidator, eliminarUsuarioValidator,eliminarUsuarioModoAdminValidator, actualizarAdminValidator} from "../middlewares/user-validator.js";
+import { agregarUsuario, actualizarUsuarios, eliminarUsuario, actualizarModoAdmin, eliminarUsuarioModoAdmin, explorarProductos } from "./user.controller.js";
+import { crearUsuarioValidator ,actualizarUsuarioValidator, eliminarUsuarioValidator,eliminarUsuarioModoAdminValidator, actualizarAdminValidator, validadorGeneralUsuario} from "../middlewares/user-validator.js";
 
 const router = Router()
 
@@ -13,5 +13,7 @@ router.put("/actualizarModoAdmin/:uid", actualizarAdminValidator, actualizarModo
 router.patch("/eliminarUsuarioModoAdmin/:uid", eliminarUsuarioModoAdminValidator, eliminarUsuarioModoAdmin)
 
 router.patch("/eliminarUsuario/", eliminarUsuarioValidator, eliminarUsuario)
+
+router.get("/explorarProductos", validadorGeneralUsuario, explorarProductos)
 
 export default router

@@ -151,6 +151,7 @@ export const productosMasVendidos = async (req, res) => {
             nombre: producto.nombre,
             precio: producto.precio,
             descripcion: producto.descripcion,
+            vendidos: producto.vendidos,
             stock: producto.stock,
             categoria: producto.categoria.nombre
         }));
