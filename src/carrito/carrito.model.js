@@ -20,9 +20,11 @@ const carritoSchema= Schema({
         }
     }],
     total: {
-        type: Number,
-        default: 1
+        type: Number
     }
+},
+{
+    versionKey: false
 })
 
 export default model("Carrito", carritoSchema);

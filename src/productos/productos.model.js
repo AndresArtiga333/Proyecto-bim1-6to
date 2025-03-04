@@ -7,7 +7,7 @@ const productoSchema = Schema({
         unique: true
     },
     precio:{
-        type: String,
+        type: Number,
         required: [true, "El precio es requerido"]
     },
     descripcion:{
@@ -33,7 +33,11 @@ const productoSchema = Schema({
         type: Boolean,
         default: true
     }
+},
+{
+    versionKey: false
 })
+
 
 productoSchema.methods.estaAgotado = function () {
     return this.stock === 0;

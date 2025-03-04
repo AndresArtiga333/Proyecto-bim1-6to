@@ -4,6 +4,7 @@ import { validarCampos } from "./validar-campos.js";
 import { handleErrors } from "./handleErrors.js";
 import { validateJWT } from "./validate-jwt.js";
 import { hasRoles } from "./validate-roles.js";
+import { soloListarCategoria } from "../helpers/categoria-helper.js";
 
 export const registerValidator = [
     body("nombre").notEmpty().withMessage("El nombre es requerido"),
@@ -73,5 +74,26 @@ export const eliminarUsuarioValidator = [
 export const validadorGeneralUsuario = [
     validateJWT,
     hasRoles("CLIENT", "ADMIN"),
+    handleErrors
+]
+
+export const carritoValidator = [
+    validateJWT,
+    hasRoles("CLIENT", "ADMIN"),
+    body("pid").isMongoId().withMessage("No es un ID válido de MongoDB"),
+    body("cantidad").isInt({ min: 1 }).withMessage("La cantidad debe ser un número entero positivo mayor que 0"),
+    validarCampos,
+    handleErrors
+]
+
+export const explorarProductosValidator = [
+    validateJWT,
+    hasRoles("CLIENT", "ADMIN"),
+    body('nombre').optional().isString().withMessage("El nombre debe ser una cadena de texto"),
+    body('categoria').optional().isMongoId().withMessage("La categoría no es válida"),
+    body('masVendidos').optional().isBoolean().withMessage("El parámetro 'masVendidos' debe ser un valor booleano"),
+    body('listarCategorias').optional().isBoolean().withMessage("El parámetro 'listarCategorias' debe ser un valor booleano")
+    .custom(soloListarCategoria),
+    validarCampos,
     handleErrors
 ]

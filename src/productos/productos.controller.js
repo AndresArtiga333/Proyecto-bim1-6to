@@ -7,6 +7,7 @@ export const agregarProducto = async (req, res) => {
         const producto = await Productos.create({nombre, precio, descripcion, categoria, stock});
 
         const productoConCategoria = await Productos.findById(producto._id).populate("categoria", "nombre");
+        console.log(productoConCategoria);
         return res.status(200).json({
             success: true,
             message: "Producto agregado correctamente",

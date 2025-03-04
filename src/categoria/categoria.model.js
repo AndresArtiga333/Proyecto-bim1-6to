@@ -10,6 +10,9 @@ const categoriaSchema = Schema({
         type: Boolean,
         default: true
     }
+},
+{
+    versionKey: false
 })
 
 categoriaSchema.methods.toJSON = function(){

@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import Usuarios from "./user.model.js"
 import Productos from "../productos/productos.model.js"
 import Categoria from "../categoria/categoria.model.js"
+import Carrito from "../carrito/carrito.model.js"
 
 export const agregarUsuario = async (req, res) =>{
     try{
@@ -192,6 +193,66 @@ export const explorarProductos = async (req, res) => {
             message: "Error filtering products",
             error: err.message
         });
+    }
+};
+
+export const agregarAlCarrito = async (req, res) => {
+    try{
+        const {usuario} = req;
+        const {pid, cantidad} = req.body;
+
+        const producto = await Productos.findById(pid);
+        if(!producto){
+            return res.status(404).json({
+                success: false,
+                message: "Producto no encontrado"
+            })
+        }
+        if (producto.stock < cantidad) {
+            return res.status(400).json({
+                success: false,
+                message: "No hay suficiente stock disponible"
+            });
+        }
+
+        let carrito = await Carrito.findOne({usuario: usuario._id});
+        if(!carrito){
+            carrito = await Carrito.create({usuario: usuario._id, productos: []})
+        }
+        const productoEnCarrito = carrito.productos.find(p => p.producto.toString() === producto._id.toString());
+        if(productoEnCarrito){
+            const cantidadTotal = productoEnCarrito.cantidad + cantidad;
+
+            if (cantidadTotal > producto.stock) {
+                return res.status(400).json({
+                    success: false,
+                    message: "No hay suficiente stock para la cantidad solicitada"
+                });
+            }
+
+            productoEnCarrito.cantidad += cantidad;
+        } else {
+            carrito.productos.push({producto: producto._id, cantidad});
+        }
+
+        let total = 0;
+        for (let item of carrito.productos) {
+            const productoData = await Productos.findById(item.producto); 
+            total += productoData.precio * item.cantidad;  
+        }
+        carrito.total = total;
+        await carrito.save();
+        return res.status(201).json({
+            success: true,
+            message: "Producto agregado al carrito",
+            carrito
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al agregar al carrito",
+            error: err.message
+        })
     }
 };
  
