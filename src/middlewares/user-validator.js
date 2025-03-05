@@ -63,12 +63,16 @@ export const actualizarAdminValidator = [
 export const eliminarUsuarioModoAdminValidator = [
     validateJWT,
     hasRoles("ADMIN"),
-    param("uid").isMongoId().withMessage("No es un ID válido de MongoDB")
+    param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
+    validarCampos,
+    handleErrors
 ]
 
 export const eliminarUsuarioValidator = [
     validateJWT,
-    hasRoles("ADMIN")
+    hasRoles("ADMIN", "CLIENT"),
+    validarCampos,
+    handleErrors
 ]
 
 export const validadorGeneralUsuario = [

@@ -117,7 +117,8 @@ export const eliminarUsuarioModoAdmin = async (req, res) => {
 export const eliminarUsuario = async (req, res) =>{
     try{
         const {usuario} = req;
-        const eliminarUsuario = await Usuarios.findOneAndUpdate(usuario, {status: false}, {new: true})
+        const {contra} =req.body;
+        const eliminarUsuario = await Usuarios.findById(usuario);
         if(!eliminarUsuario){
             return res.status(404).json({
                 success: false,
@@ -125,10 +126,20 @@ export const eliminarUsuario = async (req, res) =>{
             })
         }
 
+        const valida = await bcrypt.compare(contra, usuario.contra);
+        if (!valida) {
+            return res.status(400).json({
+                success: false,
+                message: "No es tu contraseña"
+            });
+        }
+
+        usuario.status = false;
+        await usuario.save();
+
         return res.status(200).json({
             success: true,
-            message: "Usuario eliminado",
-            eliminarUsuario
+            message: "Usuario eliminado"
         })
     }catch(err){
         return res.status(500).json({
@@ -254,5 +265,4 @@ export const agregarAlCarrito = async (req, res) => {
             error: err.message
         })
     }
-};
- 
+}; 

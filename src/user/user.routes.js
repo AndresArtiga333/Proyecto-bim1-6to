@@ -2,7 +2,7 @@ import { Router } from "express";
 import { agregarUsuario, actualizarUsuarios, eliminarUsuario, actualizarModoAdmin,
      eliminarUsuarioModoAdmin, explorarProductos, agregarAlCarrito } from "./user.controller.js";
 import { crearUsuarioValidator ,actualizarUsuarioValidator, eliminarUsuarioValidator
-    ,eliminarUsuarioModoAdminValidator, actualizarAdminValidator, validadorGeneralUsuario, explorarProductosValidator,
+    ,eliminarUsuarioModoAdminValidator, actualizarAdminValidator,  explorarProductosValidator,
     carritoValidator} from "../middlewares/user-validator.js";
 
 const router = Router()
