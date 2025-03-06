@@ -3,6 +3,9 @@ import Usuarios from "./user.model.js"
 import Productos from "../productos/productos.model.js"
 import Categoria from "../categoria/categoria.model.js"
 import Carrito from "../carrito/carrito.model.js"
+import Factura from "../factura/factura.model.js"
+import fs from "fs";
+import PDFDocument from "pdfkit";
 
 export const agregarUsuario = async (req, res) =>{
     try{
@@ -266,3 +269,117 @@ export const agregarAlCarrito = async (req, res) => {
         })
     }
 }; 
+
+export const finalizarCompra = async (req, res) => {
+    try{
+        const {usuario} = req;
+        const {metodoPago} = req.body;
+
+        const usuarioCompleto = await Usuarios.findById(usuario).select('nombre apellido nit');
+        if (!usuarioCompleto) {
+            return res.status(404).json({
+                success: false,
+                message: "Usuario no encontrado"
+            });
+        }
+
+        let carrito = await Carrito.findOne({ usuario: usuario._id });
+        if (!carrito || carrito.productos.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "El carrito está vacío o no existe"
+            });
+        }
+
+        const productosCarrito = [];
+
+        for (let item of carrito.productos) {
+            const producto = await Productos.findById(item.producto);
+            if (!producto) {
+                return res.status(404).json({
+                    success: false,
+                    message: `Producto con ID ${item.producto} no encontrado`
+                });
+            }
+            producto.stock -= item.cantidad;
+            producto.vendidos += item.cantidad;
+            await producto.save();
+
+            productosCarrito.push({
+                producto: producto._id,
+                nombre: producto.nombre,
+                cantidad: item.cantidad,
+                precio: producto.precio
+            });
+        }   
+        
+        const nuevaFactura = new Factura({
+            usuario: usuario._id,
+            usuarioInformacion: {
+                nombre: usuarioCompleto.nombre,
+                apellido: usuarioCompleto.apellido,
+                nit: usuarioCompleto.nit
+            },
+            productos: productosCarrito,  
+            total: carrito.total,  
+            metodoPago,
+            fechaCompra: new Date()
+        });
+
+        await nuevaFactura.save();
+
+        carrito.productos = [];
+        carrito.total = 0;
+        await carrito.save();
+
+        const doc = new PDFDocument();
+        const facturaPdfPath = `./facturasPdfs/factura_${nuevaFactura._id}.pdf`;
+
+        doc.pipe(fs.createWriteStream(facturaPdfPath));
+
+        doc.fontSize(18).text('Factura de Compra', { align: 'center' });
+
+        doc.fontSize(12).text(`Fecha: ${nuevaFactura.fechaCompra}`);
+        doc.text(`Usuario: ${usuarioCompleto.nombre} ${usuarioCompleto.apellido}`);
+        doc.text(`NIT: ${usuarioCompleto.nit}`);
+        doc.text(`Método de pago: ${nuevaFactura.metodoPago}`);
+
+        doc.moveDown();
+
+        doc.text('Productos:', { underline: true });
+        nuevaFactura.productos.forEach((item, index) => {
+            doc.text(`- Producto ${index + 1}: ${item.nombre} - ${item.cantidad} x $${item.precio}`);
+        });
+
+        doc.moveDown();
+
+        doc.text(`Total: $${nuevaFactura.total}`);
+
+        doc.moveDown();
+
+        doc.end();
+
+        return res.status(201).json({
+            success: true,
+            message: "Compra completada con éxito",
+            factura: {
+                usuario: usuarioCompleto.correo,
+                productos: productosCarrito.map(p => ({
+                    producto: p.nombre,
+                    cantidad: p.cantidad,
+                    precio: p.precio
+                })),
+                total: nuevaFactura.total,
+                metodoPago: nuevaFactura.metodoPago,
+                fechaCompra: nuevaFactura.fechaCompra,
+                facturaPDF: `La factura se creo en el folder: /facturasPdfs/factura_${nuevaFactura._id}.pdf` // Ruta del PDF generado
+            }
+        });
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al finalizar la compra",
+            error: err.message
+        })
+    }
+}

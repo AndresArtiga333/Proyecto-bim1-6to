@@ -35,6 +35,11 @@ const userSchema = Schema({
     status:{
         type: Boolean,
         default: true
+    },
+    nit:{
+        type: String,
+        required: true,
+        unique: true
     }
 },
     {

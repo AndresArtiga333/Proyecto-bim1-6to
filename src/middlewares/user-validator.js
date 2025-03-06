@@ -8,10 +8,14 @@ import { soloListarCategoria } from "../helpers/categoria-helper.js";
 
 export const registerValidator = [
     body("nombre").notEmpty().withMessage("El nombre es requerido"),
+    body("apellido").notEmpty().withMessage("El apellido es requerido"),
+    body("telefono").notEmpty().withMessage("El teléfono es requerido"),
+    body("nit").notEmpty().withMessage("El NIT es requerido"),
+    body("nit").isLength({ min: 8, max: 8 }).withMessage("El NIT debe tener 8 caracteres"),
     body("correo").notEmpty().withMessage("El email es requerido"),
     body("correo").isEmail().withMessage("No es un email válido"),
     body("correo").custom(correoExists),
-    /*body("password").isStrongPassword({
+    /*body("contra").isStrongPassword({
         minLength: 8,
         minLowercase:1,
         minUppercase: 1,
@@ -98,6 +102,14 @@ export const explorarProductosValidator = [
     body('masVendidos').optional().isBoolean().withMessage("El parámetro 'masVendidos' debe ser un valor booleano"),
     body('listarCategorias').optional().isBoolean().withMessage("El parámetro 'listarCategorias' debe ser un valor booleano")
     .custom(soloListarCategoria),
+    validarCampos,
+    handleErrors
+]
+
+export const finalizarCompraValidator = [
+    validateJWT,
+    hasRoles("CLIENT", "ADMIN"),
+    body("metodoPago").notEmpty().withMessage("El método de pago es requerido"),
     validarCampos,
     handleErrors
 ]

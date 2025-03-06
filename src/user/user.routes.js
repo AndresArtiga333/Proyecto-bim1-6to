@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { agregarUsuario, actualizarUsuarios, eliminarUsuario, actualizarModoAdmin,
-     eliminarUsuarioModoAdmin, explorarProductos, agregarAlCarrito } from "./user.controller.js";
+     eliminarUsuarioModoAdmin, explorarProductos, agregarAlCarrito, finalizarCompra } from "./user.controller.js";
 import { crearUsuarioValidator ,actualizarUsuarioValidator, eliminarUsuarioValidator
     ,eliminarUsuarioModoAdminValidator, actualizarAdminValidator,  explorarProductosValidator,
-    carritoValidator} from "../middlewares/user-validator.js";
+    carritoValidator, finalizarCompraValidator} from "../middlewares/user-validator.js";
 
 const router = Router()
 
@@ -20,5 +20,7 @@ router.patch("/eliminarUsuario/", eliminarUsuarioValidator, eliminarUsuario)
 router.get("/explorarProductos", explorarProductosValidator, explorarProductos)
 
 router.post("/agregarAlCarrito", carritoValidator, agregarAlCarrito)
+
+router.post("/finalizarCompra", finalizarCompraValidator, finalizarCompra)
 
 export default router
