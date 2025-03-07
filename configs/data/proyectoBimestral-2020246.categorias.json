@@ -1,6 +1,6 @@
 [{
   "_id": {
-    "$oid": "67ca3ee5705ac2deda7504ee"
+    "$oid": "67cafbb8e972c559db938066"
   },
   "nombre": "default",
   "status": true
@@ -14,15 +14,8 @@
 },
 {
   "_id": {
-    "$oid": "67ca4959e1534dc9a8ed2950"
+    "$oid": "67cb100e197966e7f44426eb"
   },
-  "nombre": "Prueba1",
-  "status": false
-},
-{
-  "_id": {
-    "$oid": "67ca4c461402bce8baca75a8"
-  },
-  "nombre": "Prueba2",
-  "status": false
+  "nombre": "Muebles",
+  "status": true
 }]

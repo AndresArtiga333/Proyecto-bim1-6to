@@ -157,6 +157,8 @@ export const explorarProductos = async (req, res) => {
     try {
         const { nombre, categoria, masVendidos, listarCategorias } = req.body;
         const filter = {};
+
+        console.log(nombre)
  
         if (categoria) {
             filter.categoria = categoria;
@@ -189,7 +191,7 @@ export const explorarProductos = async (req, res) => {
                 message: "No se encontraron productos con los filtros proporcionados"
             });
         }
-
+        
         const productosAtributos = productos.map(producto => ({
             nombre: producto.nombre,
             precio: producto.precio,
