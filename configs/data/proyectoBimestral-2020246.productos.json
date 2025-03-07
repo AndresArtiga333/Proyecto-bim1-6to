@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "67ca4e4f1402bce8baca75b0"
+  },
+  "nombre": "Leche deslactosada",
+  "precio": 10,
+  "descripcion": "leche",
+  "categoria": {
+    "$oid": "67ca4943e1534dc9a8ed294c"
+  },
+  "stock": 98,
+  "vendidos": 1,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67ca51021402bce8baca75bc"
+  },
+  "nombre": "Sofa",
+  "precio": 10,
+  "descripcion": "sofa",
+  "categoria": {
+    "$oid": "67ca3ee5705ac2deda7504ee"
+  },
+  "stock": 28,
+  "vendidos": 1,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67ca53d8fcfa35a39a173781"
+  },
+  "nombre": "Silon",
+  "precio": 10,
+  "descripcion": "Sillon",
+  "categoria": {
+    "$oid": "67ca4959e1534dc9a8ed2950"
+  },
+  "stock": 0,
+  "vendidos": 0,
+  "status": true
+}]

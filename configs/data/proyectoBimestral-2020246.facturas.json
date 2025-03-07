@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "67ca561dfcfa35a39a1737b0"
+  },
+  "usuario": {
+    "$oid": "67ca3f0e98590a48cac9c789"
+  },
+  "productos": [
+    {
+      "producto": {
+        "$oid": "67ca4e4f1402bce8baca75b0"
+      },
+      "nombre": "Leche deslactosada",
+      "cantidad": 2,
+      "precio": 10,
+      "_id": {
+        "$oid": "67ca58d5d6a1ef86f3186147"
+      }
+    },
+    {
+      "producto": {
+        "$oid": "67ca51021402bce8baca75bc"
+      },
+      "nombre": "Sofa",
+      "cantidad": 2,
+      "precio": 10,
+      "_id": {
+        "$oid": "67ca58d5d6a1ef86f3186148"
+      }
+    }
+  ],
+  "total": 40,
+  "metodoPago": "TARJETA",
+  "fechaCompra": {
+    "$date": "2025-03-07T02:12:45.991Z"
+  }
+}]

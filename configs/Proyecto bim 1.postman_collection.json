@@ -1,0 +1,965 @@
+{
+	"info": {
+		"_postman_id": "e7e5e0ed-fd95-47b7-ba35-154e95906077",
+		"name": "Proyecto bim 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37641954"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Actualizar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhNDUzOGUxNTM0ZGM5YThlZDI5MzUiLCJpYXQiOjE3NDEzMDkzMjUsImV4cCI6MTc0MTMxMjkyNX0.VxVii4w95B2Vo3Lic6-UyWe0_yTDrWHEscolrj29CYQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"David\",\r\n  \"apellido\": \"Coloma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/actualizarUsuario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"actualizarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhNDUzOGUxNTM0ZGM5YThlZDI5MzUiLCJpYXQiOjE3NDEzMDkzMjUsImV4cCI6MTc0MTMxMjkyNX0.VxVii4w95B2Vo3Lic6-UyWe0_yTDrWHEscolrj29CYQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contra\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/eliminarUsuario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"eliminarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDkwMjUsImV4cCI6MTc0MTMxMjYyNX0.swvGnlNQ8jo_Tq6TdoYA4oOKzjGRrf7KZ8miXyZywlw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Daniel\",\r\n    \"apellido\": \"Tum\",\r\n    \"correo\": \"dtum@gmail.com\",\r\n    \"contra\": \"1234\",\r\n    \"telefono\": \"12345678\",\r\n    \"nit\": \"09876543\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/agregarUsuario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"agregarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar modo admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/actualizarModoAdmin/67ca4538e1534dc9a8ed2935",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"actualizarModoAdmin",
+								"67ca4538e1534dc9a8ed2935"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar usuarios modo admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/eliminarUsuarioModoAdmin/67ca4538e1534dc9a8ed2935",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"eliminarUsuarioModoAdmin",
+								"67ca4538e1534dc9a8ed2935"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar producto al carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTMzMDcsImV4cCI6MTc0MTMxNjkwN30.kpnqCHP8yf1qE8OB2l3x_G2Ug-jIP6bJX0JbkKdlc-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pid\": \"67ca51021402bce8baca75bc\",\r\n    \"cantidad\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/agregarAlCarrito",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"agregarAlCarrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Explorar productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTMzMDcsImV4cCI6MTc0MTMxNjkwN30.kpnqCHP8yf1qE8OB2l3x_G2Ug-jIP6bJX0JbkKdlc-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"masVendidos\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/explorarProductos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"explorarProductos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar compra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTMzMDcsImV4cCI6MTc0MTMxNjkwN30.kpnqCHP8yf1qE8OB2l3x_G2Ug-jIP6bJX0JbkKdlc-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"metodoPago\": \"TARJETA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/finalizarCompra",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"finalizarCompra"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jose\",\r\n    \"apellido\": \"Morejon\",\r\n    \"correo\": \"jmorejon@gmail.com\",\r\n    \"contra\": \"123\",\r\n    \"telefono\": \"12345678\",\r\n    \"nit\": \"17301234\",\r\n    \"rol\": \"CLIENT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"admin@gmail.com\",\r\n    \"contra\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Agregar categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Prueba2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/categoria/agregarCategoria",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"categoria",
+								"agregarCategoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar categorias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/categoria/listarCategorias",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"categoria",
+								"listarCategorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Prueba1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/categoria/editarCategoria/67ca4959e1534dc9a8ed2950",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"categoria",
+								"editarCategoria",
+								"67ca4959e1534dc9a8ed2950"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/categoria/eliminarCategoria/67ca4959e1534dc9a8ed2950",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"categoria",
+								"eliminarCategoria",
+								"67ca4959e1534dc9a8ed2950"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Agregar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Silon\",\r\n    \"precio\": 10,\r\n    \"descripcion\": \"Sillon\",\r\n    \"categoria\": \"67ca4959e1534dc9a8ed2950\",\r\n    \"stock\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/productos/agregarProducto",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"productos",
+								"agregarProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar y buscar productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMDk3OTMsImV4cCI6MTc0MTMxMzM5M30.G3vPiQOaTdHmlTs7LMh0D3gTozZcac7bfQ61B_CLxMU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pid\": \"67ca4e4f1402bce8baca75b0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/productos/listarYBuscarProductos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"productos",
+								"listarYBuscarProductos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTE5MDksImV4cCI6MTc0MTMxNTUwOX0.2oOsubdO6Qvj9VAStiodhaOtw7o88y774hXKiLJKKJ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stock\": \"100\",\r\n    \"nombre\": \"Leche deslactosada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/productos/editarProducto/67ca4e4f1402bce8baca75b0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"productos",
+								"editarProducto",
+								"67ca4e4f1402bce8baca75b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar productos agotados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTE5MDksImV4cCI6MTc0MTMxNTUwOX0.2oOsubdO6Qvj9VAStiodhaOtw7o88y774hXKiLJKKJ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/productos/productosAgotados",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"productos",
+								"productosAgotados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar productos mas vendidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzNTc1OTQ2NjY1NDY1M2I5NWQ5NTIiLCJpYXQiOjE3NDA5NTM2OTMsImV4cCI6MTc0MDk1NzI5M30.1yVKYnSCN-xv-dbX8KoSBQg3gdND2x81Ucx1FJgtXUs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/productos/productosMasVendidos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"productos",
+								"productosMasVendidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzNTc1OTQ2NjY1NDY1M2I5NWQ5NTIiLCJpYXQiOjE3NDA5NTQxMDUsImV4cCI6MTc0MDk1NzcwNX0.7fwHTAvzFlMyqUJyJXdf0-hwTto3nUPGEt-GMYEfo5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/productos/eliminarProducto/67c3a6960f1b0b63cf7b64db",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"productos",
+								"eliminarProducto",
+								"67c3a6960f1b0b63cf7b64db"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Factura",
+			"item": [
+				{
+					"name": "Editar Factura",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTMzMDcsImV4cCI6MTc0MTMxNjkwN30.kpnqCHP8yf1qE8OB2l3x_G2Ug-jIP6bJX0JbkKdlc-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productos\":[\r\n        {\r\n            \"producto\": \"67ca4e4f1402bce8baca75b0\",\r\n            \"cantidad\": 2\r\n        },\r\n        {\r\n            \"producto\": \"67ca51021402bce8baca75bc\",\r\n            \"cantidad\": 2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/factura/editarFactura/67ca561dfcfa35a39a1737b0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"factura",
+								"editarFactura",
+								"67ca561dfcfa35a39a1737b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar facturas por usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhM2YwZTk4NTkwYTQ4Y2FjOWM3ODkiLCJpYXQiOjE3NDEzMTMzMDcsImV4cCI6MTc0MTMxNjkwN30.kpnqCHP8yf1qE8OB2l3x_G2Ug-jIP6bJX0JbkKdlc-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/factura/listarFacturasUsuario/67ca3f0e98590a48cac9c789",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"factura",
+								"listarFacturasUsuario",
+								"67ca3f0e98590a48cac9c789"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

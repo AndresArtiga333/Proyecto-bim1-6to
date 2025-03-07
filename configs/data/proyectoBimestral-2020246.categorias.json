@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "67ca3ee5705ac2deda7504ee"
+  },
+  "nombre": "default",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67ca4943e1534dc9a8ed294c"
+  },
+  "nombre": "Lacteos",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67ca4959e1534dc9a8ed2950"
+  },
+  "nombre": "Prueba1",
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "67ca4c461402bce8baca75a8"
+  },
+  "nombre": "Prueba2",
+  "status": false
+}]

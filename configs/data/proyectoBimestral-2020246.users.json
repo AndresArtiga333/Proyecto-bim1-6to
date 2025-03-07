@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "67ca3f0e98590a48cac9c789"
+  },
+  "nombre": "Admin",
+  "apellido": "PorDefecto",
+  "correo": "admin@gmail.com",
+  "contra": "$2b$10$y/4GdbUVxEotctM2mhxcH.92ZH8CuzjmJfE.g3WzunHs0HOqN2K7i",
+  "telefono": "00000000",
+  "rol": "ADMIN",
+  "status": true,
+  "nit": "00000000"
+},
+{
+  "_id": {
+    "$oid": "67ca43f498590a48cac9c78c"
+  },
+  "nombre": "Jose",
+  "apellido": "Morejon",
+  "correo": "jmorejon@gmail.com",
+  "contra": "$2b$10$h/KsMIedwAbtqhj30WieROBaTXbmMrygucRaeRvELe0Uw3JhjKrwS",
+  "telefono": "12345678",
+  "rol": "CLIENT",
+  "status": true,
+  "nit": "17301234"
+},
+{
+  "_id": {
+    "$oid": "67ca4538e1534dc9a8ed2935"
+  },
+  "nombre": "David",
+  "apellido": "Coloma",
+  "correo": "dtum@gmail.com",
+  "contra": "$2b$10$WHlow8KuYAHv89PDl6FRieGva1ejrqOtoi7oe2qL5ssXa/wa0VGpe",
+  "telefono": "12345678",
+  "rol": "CLIENT",
+  "status": false,
+  "nit": "09876543"
+}]

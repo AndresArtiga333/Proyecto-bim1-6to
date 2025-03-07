@@ -11,6 +11,7 @@ import userRoutes from "../src/user/user.routes.js"
 import categoriaRoutes from "../src/categoria/categoria.routes.js"
 import productosRoutes from "../src/productos/productos.routes.js"
 import facturaRoutes from "../src/factura/factura.routes.js"
+import { swaggerDocs, swaggerUi } from "./swagger.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -27,6 +28,7 @@ const routes = (app) =>{
     app.use("/proyectoBim/v1/categoria", categoriaRoutes)
     app.use("/proyectoBim/v1/productos", productosRoutes)
     app.use("/proyectoBim/v1/factura", facturaRoutes)
+    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 }
 
