@@ -85,6 +85,7 @@ export const eliminarUsuarioValidator = [
 export const validadorGeneralUsuario = [
     validateJWT,
     hasRoles("CLIENT", "ADMIN"),
+    validarCampos,
     handleErrors
 ]
 

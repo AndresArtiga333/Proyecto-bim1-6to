@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { agregarUsuario, actualizarUsuarios, eliminarUsuario, actualizarModoAdmin,
-     eliminarUsuarioModoAdmin, explorarProductos, agregarAlCarrito, finalizarCompra } from "./user.controller.js";
+     eliminarUsuarioModoAdmin, explorarProductos, agregarAlCarrito, finalizarCompra, listarHistorial } from "./user.controller.js";
 import { crearUsuarioValidator ,actualizarUsuarioValidator, eliminarUsuarioValidator
     ,eliminarUsuarioModoAdminValidator, actualizarAdminValidator,  explorarProductosValidator,
-    carritoValidator, finalizarCompraValidator} from "../middlewares/user-validator.js";
+    carritoValidator, finalizarCompraValidator,
+    validadorGeneralUsuario} from "../middlewares/user-validator.js";
 
 const router = Router();
 
@@ -303,5 +304,26 @@ router.post("/agregarAlCarrito", carritoValidator, agregarAlCarrito);
  *       - ADMIN
  */
 router.post("/finalizarCompra", finalizarCompraValidator, finalizarCompra);
+
+/**
+ * @swagger
+ * /user/listarHistorial:
+ *   get:
+ *     summary: Listar el historial de compras del usuario
+ *     tags: [Usuario]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Historial de compras obtenido con éxito
+ *       404:
+ *         description: No se encontraron facturas para este usuario
+ *       500:
+ *         description: Error al listar el historial
+ *     roles:
+ *       - CLIENT
+ *       - ADMIN
+ */
+router.get("/historial", validadorGeneralUsuario, listarHistorial);
 
 export default router;

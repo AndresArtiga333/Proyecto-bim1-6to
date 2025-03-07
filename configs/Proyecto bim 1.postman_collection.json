@@ -356,6 +356,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Listar historial",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhZmJiOGU5NzJjNTU5ZGI5MzgwNjgiLCJpYXQiOjE3NDEzNTY2MjIsImV4cCI6MTc0MTM2MDIyMn0.FxJ6AcorHVK2ZUuXhRWAYpqCF_0q_qhCa18_BOg1TyM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/proyectoBim/v1/user/historial",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"proyectoBim",
+								"v1",
+								"user",
+								"historial"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

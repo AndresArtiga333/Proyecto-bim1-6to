@@ -385,3 +385,27 @@ export const finalizarCompra = async (req, res) => {
         })
     }
 }
+
+export const listarHistorial = async (req, res) =>{
+    try{
+        const {usuario} = req;
+        const historial = await Factura.find({usuario}).populate({path: "productos.producto", select: "nombre precio"});
+
+        if (historial.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No se encontraron facturas para este usuario"
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            historial
+        });
+    }catch(err){
+        return res.status(500).json({
+            succes: false,
+            message: "Error al listar el historial",
+            error: err.message
+        })
+    }
+}
