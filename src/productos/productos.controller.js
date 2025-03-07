@@ -111,7 +111,7 @@ export const productosAgotados = async (req, res) => {
     try{
         const productosAgotados = await Productos.find({stock: 0}).populate("categoria", "nombre");
 
-        if (productosSinStock.length === 0) {
+        if (productosAgotados.length === 0) {
             return res.status(200).json({
                 success: true,
                 message: "No hay productos sin stock"

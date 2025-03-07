@@ -10,6 +10,7 @@ import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
 import categoriaRoutes from "../src/categoria/categoria.routes.js"
 import productosRoutes from "../src/productos/productos.routes.js"
+import facturaRoutes from "../src/factura/factura.routes.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -25,6 +26,7 @@ const routes = (app) =>{
     app.use("/proyectoBim/v1/user", userRoutes)
     app.use("/proyectoBim/v1/categoria", categoriaRoutes)
     app.use("/proyectoBim/v1/productos", productosRoutes)
+    app.use("/proyectoBim/v1/factura", facturaRoutes)
 
 }
 

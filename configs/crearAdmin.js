@@ -16,6 +16,8 @@ export const crearAdmin = async() =>{
             username: "admin",
             correo: "admin@gmail.com",
             contra: "admin",
+            nit: "00000000",
+            telefono: "00000000",
             rol: "ADMIN"
         };
 

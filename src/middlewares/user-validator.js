@@ -33,6 +33,9 @@ export const crearUsuarioValidator = [
     body("correo").notEmpty().withMessage("El email es requerido"),
     body("correo").isEmail().withMessage("No es un email válido"),
     body("correo").custom(correoExists),
+    body("telefono").notEmpty().withMessage("El teléfono es requerido"),
+    body("nit").notEmpty().withMessage("El NIT es requerido"),
+    body("nit").isLength({ min: 8, max: 8 }).withMessage("El NIT debe tener 8 caracteres"),
     /*body("password").isStrongPassword({
         minLength: 8,
         minLowercase:1,

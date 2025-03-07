@@ -80,7 +80,13 @@ export const eliminarCategoria = async (req, res) => {
             { categoria: categoriaDefault._id } 
         );
 
-        await Categoria.findByIdAndUpdate(cid, {status: false}, {new: true});
+        const categoria = await Categoria.findByIdAndUpdate(cid, {status: false}, {new: true});
+        if(!categoria){
+            return res.status(403).json({
+                success: false,
+                message: "La categoria no existe"
+            })
+        }
         return res.status(200).json({
             success: true,
             message: "Categoria eliminada correctamente"

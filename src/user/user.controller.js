@@ -172,6 +172,8 @@ export const explorarProductos = async (req, res) => {
                 success: true,
                 categorias
             })
+        }if (masVendidos) {
+            filter.vendidos = { $gt: 0 };
         }
  
         let orden = {};
@@ -372,7 +374,7 @@ export const finalizarCompra = async (req, res) => {
                 total: nuevaFactura.total,
                 metodoPago: nuevaFactura.metodoPago,
                 fechaCompra: nuevaFactura.fechaCompra,
-                facturaPDF: `La factura se creo en el folder: /facturasPdfs/factura_${nuevaFactura._id}.pdf` // Ruta del PDF generado
+                facturaPDF: "Para ver el pdf de la factura, ir al directorio llamado facturasPdfs" // Ruta del PDF generado
             }
         });
     }catch(err){
