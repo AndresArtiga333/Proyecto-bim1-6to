@@ -19,5 +19,5 @@ git clone https://github.com/AndresArtiga333/Proyecto-bim1-6to.git
 
 ### Data y colleccion de endpoints
 
--- La coleccion de endpoints se encuentra en la carpeta de configs
---La data se encuntra igual en la carpeta de configs pero dentro de la carpeta data
+- La coleccion de endpoints se encuentra en la carpeta de configs
+- La data se encuntra igual en la carpeta de configs pero dentro de la carpeta data
